@@ -8,19 +8,17 @@ import java.util.List;
 
 public class ProductService {
 
-
+    // region SINGLETON
     private static ProductService instance;
     public static ProductService getInstance(){
         System.out.println("recup de l'instance du service");
         return instance == null ? instance = new ProductService() : instance;
     }
-    private final List<Product> list = new ArrayList<>();
+    private ProductService() {}
+    // endregion
 
-    private ProductService() {
-        list.add( new Product(1, "pomme", "pompom", "fruit", 1) );
-        list.add( new Product(2, "sofa", "conforta", "meuble", 200) );
-        list.add( new Product(3, "ecran 20\"", "platus", "ecran", 150) );
-    }
+    private final List<Product> list = new ArrayList<>();
+    private int lastID;
 
     public List<Product> getAll(){
         return new ArrayList<>(list);
@@ -31,6 +29,12 @@ public class ProductService {
                 .filter(p -> p.getId() == id)
                 .findFirst()
                 .orElseThrow( () -> new ProductNotFoundException(id) );
+    }
+
+    public int insert(Product toInsert){
+        toInsert.setId( ++lastID );
+        list.add(toInsert);
+        return toInsert.getId();
     }
 
 }

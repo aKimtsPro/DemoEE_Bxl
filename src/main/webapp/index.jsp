@@ -9,6 +9,7 @@
 </h1>
 <br/>
 <a href="hello-servlet">Hello Servlet</a>
-<a href="">Voir les produits</a>
+<a href="product/getAll.jsp">Voir les produits</a>
+<a href="product/add.jsp">Ajouter un produits</a>
 </body>
 </html>

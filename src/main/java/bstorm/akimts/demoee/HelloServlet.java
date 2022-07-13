@@ -14,6 +14,7 @@ public class HelloServlet extends HttpServlet {
     private String message;
 
     public void init() {
+        Persistence.createEntityManagerFactory("default");
         message = "Hello World!";
         System.out.println("Le servlet est créé");
     }
