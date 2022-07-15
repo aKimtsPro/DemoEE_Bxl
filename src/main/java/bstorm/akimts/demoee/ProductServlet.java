@@ -2,6 +2,7 @@ package bstorm.akimts.demoee;
 
 import bstorm.akimts.demoee.models.Product;
 import bstorm.akimts.demoee.service.ProductService;
+import jakarta.ejb.EJB;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
