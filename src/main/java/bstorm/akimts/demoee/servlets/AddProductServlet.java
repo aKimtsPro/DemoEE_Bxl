@@ -3,9 +3,11 @@ package bstorm.akimts.demoee.servlets;
 import bstorm.akimts.demoee.models.Product;
 import bstorm.akimts.demoee.service.ProductService;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet(name = "AddProductServlet", value = "/product/add")
@@ -15,7 +17,7 @@ public class AddProductServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        request.getRequestDispatcher("/product/add.jsp").forward(request,response);
     }
 
     @Override
@@ -27,7 +29,7 @@ public class AddProductServlet extends HttpServlet {
         try {
             double price = Double.parseDouble( request.getParameter("price") );
             Product toInsert = new Product(name, brand, category, price);
-            int id = service.insert(toInsert);
+            long id = service.insert(toInsert);
 
             response.sendRedirect(request.getContextPath()+"/product/getOne.jsp?id=" + id); // renvoi une reponse de redirection
             // request.getRequestDispatcher( "/product/getOne.jsp?id=" + id ).forward(request, response); // continue la creation de la reponse autre part

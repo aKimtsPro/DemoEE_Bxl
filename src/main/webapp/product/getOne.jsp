@@ -7,6 +7,8 @@
   Time: 13:31
   To change this template use File | Settings | File Templates.
 --%>
+
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%-- créer des variables et/ou methodes dans la classe de la Servlet générée --%>
@@ -22,12 +24,14 @@
     System.out.println("dans la méthode service");
     Product p = service.getOne(Integer.parseInt(id));
 %>
+<%-- Ecrire du code metier dans les JSP ... Pas beaucoup mieux--%>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <%@ include file="../WEB-INF/fragments/css_part.jsp" %>
+    <title>details</title>
 </head>
 <body>
 
@@ -41,6 +45,6 @@
     <p><span>prix: </span> <%= p.getPrice() %> $ </p>
 </div>
 
-
+    <%@ include file="../WEB-INF/fragments/script_part.jsp"%>
 </body>
 </html>

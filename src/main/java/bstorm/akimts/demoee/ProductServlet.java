@@ -3,18 +3,20 @@ package bstorm.akimts.demoee;
 import bstorm.akimts.demoee.models.Product;
 import bstorm.akimts.demoee.service.ProductService;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
 
 // localhost:8080/{app-context}/product
+// Ce qui se passe quand on fait tout dans le Servlet...
 @WebServlet(name = "ProductServlet", value = "/product")
 public class ProductServlet extends HttpServlet {
 
+//    @EJB
     private final ProductService pService = ProductService.getInstance();
 
     @Override

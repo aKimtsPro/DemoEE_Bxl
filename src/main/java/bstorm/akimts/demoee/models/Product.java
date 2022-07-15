@@ -1,12 +1,25 @@
 package bstorm.akimts.demoee.models;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "product")
+@NamedQueries({
+        @NamedQuery(name = "get_all", query = "SELECT p FROM Product p"),
+        @NamedQuery(name = "remove_one", query = "DELETE FROM Product p WHERE p.id = :id")
+})
 public class Product {
 
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
     private String name;
     private String brand;
     private String category;
     private double price;
+
+    public Product() {
+    }
 
     public Product(String name, String brand, String category, double price) {
         this.name = name;
@@ -15,7 +28,7 @@ public class Product {
         this.price = price;
     }
 
-    public Product(int id, String name, String marque, String category, double price) {
+    public Product(long id, String name, String marque, String category, double price) {
         this.id = id;
         this.name = name;
         this.brand = marque;
@@ -23,11 +36,11 @@ public class Product {
         this.price = price;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

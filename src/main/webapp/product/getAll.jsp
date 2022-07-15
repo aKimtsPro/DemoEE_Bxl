@@ -10,6 +10,7 @@
 <html>
 <head>
     <title>Title</title>
+    <%@ include file="../WEB-INF/fragments/css_part.jsp" %>
 </head>
 <body>
 
@@ -24,6 +25,7 @@
         <p><span>nom:</span> <%= p.getName() %> </p>
         <p><span>prix:</span> <%= p.getPrice() %> $ </p>
         <p><a href="getOne.jsp?id=<%= p.getId() %>">voir détails</a></p>
+        <p><a href="update?id=<%= p.getId() %>">modifier</a></p>
       </div>
     </li>
     <% } %>

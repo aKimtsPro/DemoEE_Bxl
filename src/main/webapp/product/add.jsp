@@ -9,6 +9,7 @@
 <html>
 <head>
     <title>Title</title>
+  <%@ include file="../WEB-INF/fragments/css_part.jsp" %>
 </head>
 <body>
 

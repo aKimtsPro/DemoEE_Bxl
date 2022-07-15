@@ -3,6 +3,7 @@
 <html>
 <head>
     <title>JSP - Hello World</title>
+    <%@ include file="WEB-INF/fragments/css_part.jsp" %>
 </head>
 <body>
 <h1><%= "Hello World!" %>

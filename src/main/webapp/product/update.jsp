@@ -9,15 +9,22 @@
 <html>
 <head>
     <title>Title</title>
+    <%@ include file="../WEB-INF/fragments/css_part.jsp" %>
 </head>
 <body>
 
-<h1>Ajouter un produit</h1>
+<h1>Modifier un produit</h1>
 
 <%
     Product toUpdate = (Product) request.getAttribute("product");
-    System.out.println(request);
 %>
+
+
+<%
+    String error = (String) request.getAttribute("error");
+    if( error != null ){ %>
+        <p style="color: red"><%=error%></p>
+    <%}%>
 
 <form action="<%=request.getContextPath()%>/product/update" method="post">
     <input type="hidden" name="id" value="<%= toUpdate.getId() %>" >
